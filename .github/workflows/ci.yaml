@@ -18,8 +18,10 @@ jobs:
       - name: Build and test
         run: mvn clean install -DskipTests
 
-      - name: SonarCloud scan
-        uses: sonarsource/sonarcloud-github-action@master
+#      - name: SonarCloud scan
+#        uses: sonarsource/sonarcloud-github-action@master
+      - name: Analyze with SonarCloud
+        run: ./mvnw -B verify sonar:sonar -Dsonar.projectKey=api-comanda -Dsonar.organization=project-comanda -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
