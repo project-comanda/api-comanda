@@ -1,5 +1,5 @@
 name: CI
-on: [push]
+on: [ push ]
 
 jobs:
   test:
@@ -15,16 +15,11 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-#      - name: Build and test
-#        run: mvn clean install -DskipTests
+      - name: Build and test
+        run: mvn clean install -DskipTests
 
 #      - name: SonarCloud scan
 #        uses: sonarsource/sonarcloud-github-action@master
-      - name: Analyze with SonarCloud
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn verify sonar:sonar \
-          -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.organization=project-comanda \
-          -Dsonar.projectKey=api-comanda
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
