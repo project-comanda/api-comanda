@@ -23,3 +23,12 @@ jobs:
 #        env:
 #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@v1
+        with:
+          sonar-host-url: http://localhost:9000  # URL do seu servidor SonarQube
+          sonar-login: ${{ secrets.SONAR_TOKEN }}  # Configure este token como secret nas configurações do repositório
+          sonar-project-key: "api-comanda"
+          sonar-project-name: "project-comanda"
+          sonar-java-binaries: '**/target/**'  # Diretório onde estão os arquivos binários Java
